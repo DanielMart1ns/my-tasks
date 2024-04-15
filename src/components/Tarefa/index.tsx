@@ -1,18 +1,40 @@
+import { useState } from 'react'
 import * as S from './style'
-const Tarefa = () => (
-  <S.Card>
-    <S.Titulo>Nome da tarefa</S.Titulo>
 
-    <S.Tag>importante</S.Tag>
-    <S.Tag>pendente</S.Tag>
+type Props = {
+  titulo: string
+  prioridade: string
+  status: string
+  descricao: string
+}
 
-    <S.Descricao />
+const Tarefa = ({ titulo, prioridade, status, descricao }: Props) => {
+  const [estaEditando, setEstaEditando] = useState(false)
 
-    <S.Acoes>
-      <S.Botao>Editar</S.Botao>
-      <S.Botao>Remover</S.Botao>
-    </S.Acoes>
-  </S.Card>
-)
+  return (
+    <S.Card>
+      <S.Titulo>{titulo}</S.Titulo>
+
+      <S.Tag>{prioridade}</S.Tag>
+      <S.Tag>{status}</S.Tag>
+
+      <S.Descricao value={descricao} />
+
+      <S.Acoes>
+        {estaEditando ? (
+          <>
+            <S.Botao>Salvar</S.Botao>
+            <S.Botao onClick={() => setEstaEditando(false)}>Cancelar</S.Botao>
+          </>
+        ) : (
+          <>
+            <S.Botao onClick={() => setEstaEditando(true)}>Editar</S.Botao>
+            <S.Botao>Remover</S.Botao>
+          </>
+        )}
+      </S.Acoes>
+    </S.Card>
+  )
+}
 
 export default Tarefa
