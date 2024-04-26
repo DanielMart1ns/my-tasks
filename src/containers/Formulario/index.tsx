@@ -25,6 +25,10 @@ const Formulario = () => {
         status: enums.Status.PENDENTE
       })
     )
+    if (titulo === '') {
+      return
+    }
+
     navigate('/')
   }
 
@@ -48,17 +52,19 @@ const Formulario = () => {
           <p>Prioriodade</p>
           {Object.values(enums.Prioridade).map((prioridade) => (
             <Opcao key={prioridade}>
-              <input
-                type="radio"
-                name="prioridade"
-                value={prioridade}
-                id={prioridade}
-                defaultChecked={prioridade === enums.Prioridade.NORMAL}
-                onChange={(evento) =>
-                  setPrioridade(evento.target.value as enums.Prioridade)
-                }
-              />
-              <label htmlFor={prioridade}>{prioridade}</label>
+              <div>
+                <input
+                  type="radio"
+                  name="prioridade"
+                  value={prioridade}
+                  id={prioridade}
+                  defaultChecked={prioridade === enums.Prioridade.NORMAL}
+                  onChange={(evento) =>
+                    setPrioridade(evento.target.value as enums.Prioridade)
+                  }
+                />
+                <label htmlFor={prioridade}>{prioridade}</label>
+              </div>
             </Opcao>
           ))}
         </Opcoes>

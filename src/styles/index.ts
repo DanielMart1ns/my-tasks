@@ -15,6 +15,11 @@ export default EstiloGlobal
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 224px auto;
+
+  @media (max-width: 768px) {
+    display: block;
+    grid-template-columns: none;
+  }
 `
 export const MainContainer = styled.main`
   padding: 0 40px;

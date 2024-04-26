@@ -35,6 +35,8 @@ const tarefasSlice = createSlice({
 
       if (tarefaJaExiste) {
         alert('Já existe uma tarefa com esse nome')
+      } else if (action.payload.titulo === '') {
+        alert('Insira um título de identificação')
       } else {
         const ultimaTarefa = state.itens[state.itens.length - 1]
         const tarefaNova = {

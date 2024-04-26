@@ -17,7 +17,7 @@ const BarraLateral = ({ mostrarFiltros }: Props) => {
   const navigate = useNavigate()
 
   return (
-    <S.Aside>
+    <S.Aside mostrarFiltros={mostrarFiltros}>
       <div>
         {mostrarFiltros ? (
           <>
